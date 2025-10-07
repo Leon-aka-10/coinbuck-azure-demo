@@ -1,20 +1,24 @@
+# k8s/ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: coinbuck-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/limit-connections: "50"
-    nginx.ingress.kubernetes.io/limit-rps: "25"
+
+    # --- Basic rate limiting to prevent abuse ---
+    nginx.ingress.kubernetes.io/limit-connections: "50"     # limit 50 connections
+    nginx.ingress.kubernetes.io/limit-rps: "25"    # limit 25 requests per second
+    
 spec:
   rules:
-    - host: coinbuck.example.com
+    - host: coinbuck.example.com            # replace with your DNS or use public IP
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: coinbuck-svc
+                name: coinbuck-svc          # internal ClusterIP service
                 port:
                   number: 80

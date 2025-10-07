@@ -1,12 +1,13 @@
+# Service to expose the CoinBuck Deployment
 apiVersion: v1
 kind: Service
 metadata:
   name: coinbuck-svc
 spec:
   selector:
-    app: coinbuck
-  type: ClusterIP
+    app: coinbuck               # Targets the pods with this label
   ports:
-    - port: 80
-      targetPort: 3000
+    - port: 80                  # Service port
+      targetPort: 3000          # Container port
       protocol: TCP
+  type: ClusterIP               # Internal service only

@@ -1,18 +1,22 @@
-# General
+#--------------------------
+# General variables
+#--------------------------
+
 variable "location" {
   description = "Azure region for all resources"
   type        = string
   default     = "West Europe"
 }
 
-# Resource Group
 variable "rg_name" {
   description = "Name of the Resource Group"
   type        = string
   default     = "rg-coinbuck"
 }
 
+#----------------------
 # Log Analytics
+#----------------------
 variable "law_name" {
   description = "Name of the Log Analytics Workspace"
   type        = string
@@ -25,7 +29,9 @@ variable "law_sku" {
   default     = "PerGB2018"
 }
 
+#-------------------------------
 # Azure Container Registry
+#-------------------------------
 variable "acr_name" {
   description = "Name of the Azure Container Registry"
   type        = string
@@ -38,7 +44,9 @@ variable "acr_sku" {
   default     = "Basic"
 }
 
+#------------------------------
 # AKS Cluster
+#------------------------------
 variable "aks_name" {
   description = "Name of the AKS Cluster"
   type        = string

@@ -1,3 +1,4 @@
+# Deployment for the CoinBuck Node.js app
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,34 +6,34 @@ metadata:
   labels:
     app: coinbuck
 spec:
-  replicas: 1
+  replicas: 1                                     # Number of replicas for demo
   selector:
     matchLabels:
       app: coinbuck
-  template:
+  template:                                       # Pod template
     metadata:
       labels:
         app: coinbuck
     spec:
       containers:
         - name: coinbuck
-          image: <ACR_LOGIN_SERVER>/coinbuck-app:{{IMAGE_TAG}}
+          image: <ACR_LOGIN_SERVER>/coinbuck-app:{{IMAGE_TAG}}       # Updated by pipeline
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
-          readinessProbe:
+          readinessProbe:                         # For health check before serving traffic
             httpGet:
               path: /health
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
-          livenessProbe:
+          livenessProbe:                           # Restart pod if unhealthy
             httpGet:
               path: /live
               port: 3000
             initialDelaySeconds: 30
             periodSeconds: 20
-          resources:
+          resources:                               # CPU & memory constraints
             requests:
               cpu: "100m"
               memory: "128Mi"

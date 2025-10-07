@@ -1,18 +1,18 @@
-apiVersion: autoscaling/v2
+apiVersion: autoscaling/v2             # Use the stable HPA API version
 kind: HorizontalPodAutoscaler
 metadata:
-  name: coinbuck-hpa
+  name: coinbuck-hpa                   # Name of the HPA resource
 spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
+  scaleTargetRef:                      # The object that the HPA will scale
+    apiVersion: apps/v1                # Target is a Deployment
     kind: Deployment
-    name: coinbuck-app
-  minReplicas: 1
-  maxReplicas: 5
+    name: coinbuck-app                 # Must match the Deployment name
+  minReplicas: 1                       # Minimum number of pods to keep running
+  maxReplicas: 5                       # Maximum number of pods to scale up to
   metrics:
-    - type: Resource
+    - type: Resource                   # Scale based on a built-in resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 60
+          averageUtilization: 60       # If average CPU >50%, scale up
