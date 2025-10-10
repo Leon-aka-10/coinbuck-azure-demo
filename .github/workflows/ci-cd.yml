@@ -1,8 +1,8 @@
 name: CI / CD pipeline for CoinBuck
 
-on:
-  push:
-    branches: [ "main", "master" ]            # Trigger pipeline on main branch pushes
+#on:
+  #push:
+    #branches: [ "main", "master" ]            # Trigger pipeline on main branch pushes
 
 permissions:
   id-token: write                             # Needed for OIDC auth to Azure

@@ -76,3 +76,6 @@ variable "node_vm_size" {
   type        = string
   default     = "Standard_B2s"
 }
+
+variable "azure_subscription_id" {}
+variable "azure_tenant_id" {}
