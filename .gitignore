@@ -1,0 +1,53 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+.env.*
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+override.tf
+override.tf.json
+.crash
+
+# Kubernetes
+.kube/
+*.yaml~  # backup YAMLs
+secrets.yaml
+
+# Logs
+*.log
+logs/
+*.out
+
+# Certificates / Keys
+*.pem
+*.key
+*.crt
+*.csr
+*.pfx
+*.p12
+*.jks
+*.keystore
+id_rsa*
+serviceAccount*.json
+azure_credentials.json
+
+# VSCode / Editors
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Python (if scripts exist)
+__pycache__/
+*.pyc
+
+# Misc
+docker-compose.override.yml
