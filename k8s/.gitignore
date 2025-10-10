@@ -1,0 +1,4 @@
+# Kubernetes
+.kube/
+*.yaml~  # backup YAMLs
+secrets.yaml
